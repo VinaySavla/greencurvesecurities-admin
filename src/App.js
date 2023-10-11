@@ -1,18 +1,19 @@
-import './App.css';
-import DataTable from './components/DataTable';
-import Logo from './assets/Logo.png';
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Auth from "./auth/Auth"
+import DataTable from "./components/DataTable"
 
 function App() {
   return (
-    <div>
-      <header>
-        <img src={Logo} alt="Logo"/>
-        <br></br>
-        <br></br>
-      </header>
-      <DataTable />
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Auth />} />
+        <Route path="/contacts" element={<DataTable />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App

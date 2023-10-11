@@ -35,7 +35,7 @@ const DataTable = () => {
 
       const response = await fetch(request);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setData(data);
       setIsLoading(false);
     } catch (error) {
