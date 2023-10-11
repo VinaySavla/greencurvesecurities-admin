@@ -1,11 +1,12 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import "./Auth.css";
 import { API } from "../constants/time";
-import axios from 'axios';
+import axios from "axios";
 
 export default function Auth(props) {
   // let [authMode, setAuthMode] = useState("signin");
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   // const [data, setData] = useState([]);
 
   // const changeAuthMode = () => {
@@ -20,26 +21,30 @@ export default function Auth(props) {
     // If the form data is valid, log in the user or create a new account
 
     const data = {
-      Email : event.target.elements.email.value,
-      Password : event.target.elements.password.value,
-    }; 
+      Email: event.target.elements.email.value,
+      Password: event.target.elements.password.value,
+    };
     // console.log(email, password);
 
     // try {
-      axios.post(`${API}/signin`, data)
-    .then((result) => {
+    setIsLoading(true);
+    axios.post(`${API}/signin`, data).then(
+      (result) => {
         // console.log(result);
-        if(result.data){
-
+        if (result.data) {
+          setIsLoggedIn(true);
           alert("You are logged in successfully.");
+          setIsLoading(false);
         } else {
-
+          setIsLoggedIn(false);
           alert("Invalid email or password.");
+          setIsLoading(false);
         }
-        }, 
-        (error) => {
-            console.log(error);
-        }
+      },
+      (error) => {
+        setIsLoading(false);
+        console.log(error);
+      }
     );
     // e.target.reset();
 
@@ -65,7 +70,7 @@ export default function Auth(props) {
   //   const email = event.target.elements.email.value;
   //   const phoneNumber = event.target.elements.phoneNumber.value;
   //   const password = event.target.elements.password.value;
-  
+
   //   try {
   //     const request = new Request(`${API}/signup`, {
   //       method: "POST",
@@ -79,10 +84,10 @@ export default function Auth(props) {
   //         password,
   //       }),
   //     });
-  
+
   //     const response = await fetch(request);
   //     const data = await response.json();
-  
+
   //     if (response.ok) {
   //       // The user account was created successfully
   //       setIsLoggedIn(true);
@@ -97,6 +102,7 @@ export default function Auth(props) {
   // }
 
   // if (authMode === "signin") {
+  if (!isLoading) {
     return (
       <div className="Auth-form-container">
         <form className="Auth-form" onSubmit={handleOnSignInSubmit}>
@@ -138,7 +144,29 @@ export default function Auth(props) {
         </form>
       </div>
     );
-  // }
+  } else {
+    return (
+      <div class="scene">
+        <div class="shadow"></div>
+        <div class="jumper">
+          <div class="spinner">
+            <div class="scaler">
+              <div class="loader">
+                <div class="cuboid">
+                  <div class="cuboid__side"></div>
+                  <div class="cuboid__side"></div>
+                  <div class="cuboid__side"></div>
+                  <div class="cuboid__side"></div>
+                  <div class="cuboid__side"></div>
+                  <div class="cuboid__side"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // return (
   //   <div className="Auth-form-container">
