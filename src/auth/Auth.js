@@ -3,6 +3,7 @@ import "./Auth.css";
 import { API } from "../constants/time";
 import axios from "axios";
 import DataTable from "../components/DataTable";
+import Logo from '../assets/Logo.png';
 
 export default function Auth(props) {
   // let [authMode, setAuthMode] = useState("signin");
@@ -104,7 +105,14 @@ export default function Auth(props) {
 
   // if (authMode === "signin") {
   if (isLoggedIn) {
-    return <DataTable />;
+    return <div>
+      <header>
+        <img src={Logo} alt="Logo"/>
+        <br></br>
+        <br></br>
+      </header>
+      <DataTable />;
+      </div>
   } else {
     if (!isLoading) {
       return (

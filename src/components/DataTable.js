@@ -172,7 +172,7 @@ const DataTable = () => {
           },
         }}
         pageSizeOptions={[10, 25, 50, 100]}
-        // checkboxSelection
+        checkboxSelection
         width="100%"
         autoHeight
         slots={{ toolbar: CustomToolbar, noRowsOverlay: CustomNoRowsOverlay, }}
