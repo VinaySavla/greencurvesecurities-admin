@@ -48,6 +48,16 @@
   .MuiButtonBase-root{
     color: green  !important;
   }
+
+  .css-1rtnrqa{
+    color: #fff !important;
+    background-color: green !important;
+  }
+
+  .deleteButton{
+    color: #fff;
+    background-color: green;
+  }
   
   .css-1knaqv7-MuiButtonBase-root-MuiButton-root {
     background-color: green !important;

@@ -59,7 +59,30 @@ const DataTable = () => {
     { field: "Subject", headerName: "Subject", width: 200 },
     { field: "Message", headerName: "Message", width: 500 },
     { field: "TimeStamp", headerName: "TimeStamp", width: 200 },
+    { field: "Delete", headerName: "Delete", width: 70, renderCell: (params) => {
+      return (
+        <button className="css-1rtnrqa MuiButtonBase-root" onClick={() => deleteRow(params.row.Id)}>Delete</button>
+      );
+    } },
   ];
+
+  const deleteRow = async (id) => {
+    // Make an API call to delete the row from the database
+    const response = await fetch(`${API}/deleteContact/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      alert("The row was deleted successfully")
+      fetchData();
+      // Update the DataTable to reflect the change
+    } else {
+      alert("An error occurred. Please try again later.")
+      // An error occurred while deleting the row
+      // Handle the error
+    }
+  };
+
 
   if (isLoading) {
     return (<div className="scene">
