@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { DataGrid, GridToolbarContainer, GridCsvExportMenuItem, GridToolbarExportContainer, GridToolbarColumnsButton, GridToolbarFilterButton, GridToolbarDensitySelector } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridToolbarContainer,
+  GridCsvExportMenuItem,
+  GridToolbarExportContainer,
+  GridToolbarColumnsButton,
+  GridToolbarFilterButton,
+  GridToolbarDensitySelector,
+} from "@mui/x-data-grid";
 import { API } from "../constants/time";
-import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import "./DataTable.css";
+import Logo from "../assets/Logo.png";
 
-const csvOptions = { fileName: 'contacts' };
+const csvOptions = { fileName: "contacts" };
 function CustomExportButton(props) {
   return (
     <GridToolbarExportContainer {...props}>
@@ -28,6 +37,7 @@ function CustomToolbar(props) {
 const DataTable = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -47,23 +57,54 @@ const DataTable = () => {
     fetchData();
   }, []);
 
+  function logout() {
+    // Clear the user's authentication token
+    // setIsLoggedIn(false);
+    localStorage.setItem("isLoggedIn", false);
+  
+    // Redirect the user to the login page
+    window.location.href = '/';
+  }
+
   const columns = [
     { field: "Id", headerName: "ID", width: 70 },
     { field: "Name", headerName: "Name", width: 130 },
     { field: "Email", headerName: "Email", width: 130 },
     { field: "PhoneNumber", headerName: "Phone Number", width: 150 },
-    { field: "PreferredMethodOfContact", headerName: "Preferred Method Of Contact", width: 200 },
-    { field: "InterestedServices", headerName: "Interested Services", width: 200 },
-    { field: "InvestmentExperience", headerName: "Investment Experience", width: 200 },
+    {
+      field: "PreferredMethodOfContact",
+      headerName: "Preferred Method Of Contact",
+      width: 200,
+    },
+    {
+      field: "InterestedServices",
+      headerName: "Interested Services",
+      width: 200,
+    },
+    {
+      field: "InvestmentExperience",
+      headerName: "Investment Experience",
+      width: 200,
+    },
     { field: "City", headerName: "City", width: 100 },
     { field: "Subject", headerName: "Subject", width: 200 },
     { field: "Message", headerName: "Message", width: 500 },
     { field: "TimeStamp", headerName: "TimeStamp", width: 200 },
-    { field: "Delete", headerName: "Delete", width: 70, renderCell: (params) => {
-      return (
-        <button className="css-1rtnrqa MuiButtonBase-root" onClick={() => deleteRow(params.row.Id)}>Delete</button>
-      );
-    } },
+    {
+      field: "Delete",
+      headerName: "Delete",
+      width: 70,
+      renderCell: (params) => {
+        return (
+          <button
+            className="css-1rtnrqa MuiButtonBase-root logout-button"
+            onClick={() => deleteRow(params.row.Id)}
+          >
+            Delete
+          </button>
+        );
+      },
+    },
   ];
 
   const deleteRow = async (id) => {
@@ -73,62 +114,63 @@ const DataTable = () => {
     });
 
     if (response.ok) {
-      alert("The row was deleted successfully")
+      alert("The row was deleted successfully");
       fetchData();
       // Update the DataTable to reflect the change
     } else {
-      alert("An error occurred. Please try again later.")
+      alert("An error occurred. Please try again later.");
       // An error occurred while deleting the row
       // Handle the error
     }
   };
 
-
   if (isLoading) {
-    return (<div className="scene">
-    <div className="shadow"></div>
-    <div className="jumper">
-      <div className="spinner">
-        <div className="scaler">
-          <div className="loader">
-            <div className="cuboid">
-              <div className="cuboid__side"></div>
-              <div className="cuboid__side"></div>
-              <div className="cuboid__side"></div>
-              <div className="cuboid__side"></div>
-              <div className="cuboid__side"></div>
-              <div className="cuboid__side"></div>
+    return (
+      <div className="scene">
+        <div className="shadow"></div>
+        <div className="jumper">
+          <div className="spinner">
+            <div className="scaler">
+              <div className="loader">
+                <div className="cuboid">
+                  <div className="cuboid__side"></div>
+                  <div className="cuboid__side"></div>
+                  <div className="cuboid__side"></div>
+                  <div className="cuboid__side"></div>
+                  <div className="cuboid__side"></div>
+                  <div className="cuboid__side"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>);
+    );
   }
-  const StyledGridOverlay = styled('div')(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    '& .ant-empty-img-1': {
-      fill: theme.palette.mode === 'light' ? '#aeb8c2' : '#262626',
+  const StyledGridOverlay = styled("div")(({ theme }) => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    "& .ant-empty-img-1": {
+      fill: theme.palette.mode === "light" ? "#aeb8c2" : "#262626",
     },
-    '& .ant-empty-img-2': {
-      fill: theme.palette.mode === 'light' ? '#f5f5f7' : '#595959',
+    "& .ant-empty-img-2": {
+      fill: theme.palette.mode === "light" ? "#f5f5f7" : "#595959",
     },
-    '& .ant-empty-img-3': {
-      fill: theme.palette.mode === 'light' ? '#dce0e6' : '#434343',
+    "& .ant-empty-img-3": {
+      fill: theme.palette.mode === "light" ? "#dce0e6" : "#434343",
     },
-    '& .ant-empty-img-4': {
-      fill: theme.palette.mode === 'light' ? '#fff' : '#1c1c1c',
+    "& .ant-empty-img-4": {
+      fill: theme.palette.mode === "light" ? "#fff" : "#1c1c1c",
     },
-    '& .ant-empty-img-5': {
-      fillOpacity: theme.palette.mode === 'light' ? '0.8' : '0.08',
-      fill: theme.palette.mode === 'light' ? '#f5f5f5' : '#fff',
+    "& .ant-empty-img-5": {
+      fillOpacity: theme.palette.mode === "light" ? "0.8" : "0.08",
+      fill: theme.palette.mode === "light" ? "#f5f5f5" : "#fff",
     },
   }));
-  
+
   function CustomNoRowsOverlay() {
     return (
       <StyledGridOverlay>
@@ -182,9 +224,15 @@ const DataTable = () => {
 
   return (
     <div>
-      <style>
-        @import "./DataTable.css";
-      </style>
+      <header>
+        <img src={Logo} alt="Logo" />
+        <div class="logout-button-container">
+          <button class="logout-button" onClick={logout}>Logout</button>
+        </div>
+        <br></br>
+        <br></br>
+        <style>@import "./DataTable.css";</style>
+      </header>
       <DataGrid
         getRowId={getRowId}
         rows={data}
@@ -198,7 +246,7 @@ const DataTable = () => {
         checkboxSelection
         width="100%"
         autoHeight
-        slots={{ toolbar: CustomToolbar, noRowsOverlay: CustomNoRowsOverlay, }}
+        slots={{ toolbar: CustomToolbar, noRowsOverlay: CustomNoRowsOverlay }}
       />
     </div>
   );

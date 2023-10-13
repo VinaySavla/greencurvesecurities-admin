@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./Auth.css";
 import { API } from "../constants/time";
 import axios from "axios";
-import DataTable from "../components/DataTable";
-import Logo from '../assets/Logo.png';
+// import DataTable from "../components/DataTable";
+// import Logo from '../assets/Logo.png';
 
 export default function Auth(props) {
   // let [authMode, setAuthMode] = useState("signin");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // const [data, setData] = useState([]);
 
@@ -34,11 +34,14 @@ export default function Auth(props) {
       (result) => {
         // console.log(result);
         if (result.data) {
-          setIsLoggedIn(true);
-          alert("You are logged in successfully.");
+          // setIsLoggedIn(true);
+          localStorage.setItem("isLoggedIn", true);
+          // alert("You are logged in successfully.");
+          window.location.reload();
           setIsLoading(false);
         } else {
-          setIsLoggedIn(false);
+          // setIsLoggedIn(false);
+          localStorage.setItem("isLoggedIn", false);
           alert("Invalid email or password.");
           setIsLoading(false);
         }
@@ -48,6 +51,7 @@ export default function Auth(props) {
         console.log(error);
       }
     );
+  }
     // e.target.reset();
 
     //   if (response.ok) {
@@ -61,7 +65,6 @@ export default function Auth(props) {
     // }
 
     // Otherwise, display an error message to the user
-  }
   // async function handleOnSignUpSubmit(event) {
   //   event.preventDefault();
 
@@ -104,16 +107,6 @@ export default function Auth(props) {
   // }
 
   // if (authMode === "signin") {
-  if (isLoggedIn) {
-    return <div>
-      <header>
-        <img src={Logo} alt="Logo"/>
-        <br></br>
-        <br></br>
-      </header>
-      <DataTable />;
-      </div>
-  } else {
     if (!isLoading) {
       return (
         <div className="Auth-form-container">
@@ -240,4 +233,3 @@ export default function Auth(props) {
     //   </div>
     // );
   }
-}

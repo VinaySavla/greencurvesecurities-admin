@@ -82,6 +82,23 @@
   .MuiDataGrid-columnHeaderTitle {
     font-weight: bold !important;
   }
+
+  .logout-button-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    margin: 10px;
+  }
+  
+  .logout-button {
+    background-color: green;
+    color: white;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
   
   .scene {
     position: relative;
