@@ -1,266 +1,612 @@
-/* DataTable CSS */
+  /* DataTable CSS */
+  @import "rsuite/dist/rsuite.css";
 
-.datatable {
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse;
+  :root, .rs-theme-light {
+    --rs-gray-50: #f7f7fa;
+    --rs-gray-100: #f2f2f5;
+    --rs-gray-200: #e5e5ea;
+    --rs-gray-300: #d9d9d9;
+    --rs-gray-400: #c5c6c7;
+    --rs-gray-500: #a6a6a6;
+    --rs-gray-600: #8e8e93;
+    --rs-gray-700: #7a7a7a;
+    --rs-gray-800: #575757;
+    --rs-gray-900: #272c36;
+    --rs-primary-50: #f2faff;
+    --rs-primary-100: green;
+    --rs-primary-200: green;
+    --rs-primary-300: green;
+    --rs-primary-400: green;
+    --rs-primary-500: green;
+    --rs-primary-600: green;
+    --rs-primary-700: green;
+    --rs-primary-800: green;
+    --rs-primary-900: green;
+    --rs-red-50: #fff2f2;
+    --rs-red-100: #fccfcf;
+    --rs-red-200: #faa9a7;
+    --rs-red-300: #fa8682;
+    --rs-red-400: #f7635c;
+    --rs-red-500: #f44336;
+    --rs-red-600: #eb3626;
+    --rs-red-700: #d62915;
+    --rs-red-800: #b81c07;
+    --rs-red-900: #8f1300;
+    --rs-orange-50: #fff8f2;
+    --rs-orange-100: #ffdfc2;
+    --rs-orange-200: #fcc690;
+    --rs-orange-300: #fcb160;
+    --rs-orange-400: #fa9b2f;
+    --rs-orange-500: #fa8900;
+    --rs-orange-600: #f08800;
+    --rs-orange-700: #db8000;
+    --rs-orange-800: #bd7100;
+    --rs-orange-900: #945b00;
+    --rs-yellow-50: #fffaf2;
+    --rs-yellow-100: #ffe9c2;
+    --rs-yellow-200: #ffd991;
+    --rs-yellow-300: #ffca61;
+    --rs-yellow-400: #ffbe30;
+    --rs-yellow-500: #ffb300;
+    --rs-yellow-600: #f5af00;
+    --rs-yellow-700: #e0a500;
+    --rs-yellow-800: #c29100;
+    --rs-yellow-900: #997500;
+    --rs-green-50: #eeffed;
+    --rs-green-100: #c8f0c7;
+    --rs-green-200: #a5e0a4;
+    --rs-green-300: #82cf82;
+    --rs-green-400: #65bf67;
+    --rs-green-500: #4caf50;
+    --rs-green-600: #37ab3c;
+    --rs-green-700: #22a12a;
+    --rs-green-800: #0f9119;
+    --rs-green-900: #007d0c;
+    --rs-cyan-50: #f2ffff;
+    --rs-cyan-100: #bcf4f7;
+    --rs-cyan-200: #87e6ed;
+    --rs-cyan-300: #57dae6;
+    --rs-cyan-400: #2acadb;
+    --rs-cyan-500: #00bcd4;
+    --rs-cyan-600: #00b1cc;
+    --rs-cyan-700: #00a0bd;
+    --rs-cyan-800: #008aa6;
+    --rs-cyan-900: #006e87;
+    --rs-blue-50: green;
+    --rs-blue-100: green;
+    --rs-blue-200: green;
+    --rs-blue-500: green;
+    --rs-blue-600: green;
+    --rs-blue-700: green;
+    --rs-blue-800: green;
+    --rs-blue-900: green;
+    --rs-violet-50: #f6f2ff;
+    --rs-violet-100: #d5c9f0;
+    --rs-violet-200: #b6a1e3;
+    --rs-violet-300: #987bd4;
+    --rs-violet-400: #805ac7;
+    --rs-violet-500: #673ab7;
+    --rs-violet-600: #5f2bb3;
+    --rs-violet-700: #531ba8;
+    --rs-violet-800: #470c99;
+    --rs-violet-900: #390085;
+    --rs-state-success: #4caf50;
+    --rs-state-info: #2196f3;
+    --rs-state-warning: #ffb300;
+    --rs-state-error: #f44336;
+    --rs-body: #fff;
+    --rs-bg-success: #edfae1;
+    --rs-bg-info: #e9f5fe;
+    --rs-bg-warning: #fff9e6;
+    --rs-bg-error: #fde9ef;
+    --rs-text-link: green;
+    --rs-text-link-hover: green;
+    --rs-text-link-active: green;
+    --rs-text-primary: #575757;
+    --rs-text-secondary: #8e8e93;
+    --rs-text-tertiary: #a6a6a6;
+    --rs-text-heading: #272c36;
+    --rs-text-inverse: #f7f7fa;
+    --rs-text-heading-inverse: #fff;
+    --rs-text-active: green;
+    --rs-text-disabled: #c5c6c7;
+    --rs-text-error: #f44336;
+    --rs-border-primary: #e5e5ea;
+    --rs-border-secondary: #f2f2f5;
+    --rs-bg-card: #fff;
+    --rs-bg-overlay: #fff;
+    --rs-bg-well: #f7f7fa;
+    --rs-bg-active: green;
+    --rs-bg-backdrop: rgba(39, 44, 54, 0.3);
+    --rs-state-hover-bg: #f2faff;
+    --rs-color-focus-ring: rgba(52, 152, 255, 0.25);
+    --rs-state-focus-shadow: 0 0 0 3px rgba(52, 152, 255, 0.25);
+    --rs-state-focus-outline: 3px solid rgba(52, 152, 255, 0.25);
+    --rs-shadow-overlay: 0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06);
+    --rs-btn-default-bg: #f7f7fa;
+    --rs-btn-default-text: #575757;
+    --rs-btn-default-hover-bg: #e5e5ea;
+    --rs-btn-default-active-bg: #d9d9d9;
+    --rs-btn-default-active-text: #272c36;
+    --rs-btn-default-disabled-bg: #f7f7fa;
+    --rs-btn-default-disabled-text: #c5c6c7;
+    --rs-btn-primary-bg: green;
+    --rs-btn-primary-text: #fff;
+    --rs-btn-primary-hover-bg: green;
+    --rs-btn-primary-active-bg: green;
+    --rs-btn-subtle-text: #575757;
+    --rs-btn-subtle-hover-bg: #e5e5ea;
+    --rs-btn-subtle-hover-text: #575757;
+    --rs-btn-subtle-active-bg: #e5e5ea;
+    --rs-btn-subtle-active-text: #272c36;
+    --rs-btn-subtle-disabled-text: #c5c6c7;
+    --rs-btn-ghost-border: green;
+    --rs-btn-ghost-text: green;
+    --rs-btn-ghost-hover-border: green;
+    --rs-btn-ghost-hover-text: green;
+    --rs-btn-ghost-active-border: green;
+    --rs-btn-ghost-active-text: green;
+    --rs-btn-link-text: green;
+    --rs-btn-link-hover-text: green;
+    --rs-btn-link-active-text: green;
+    --rs-iconbtn-addon: #f2f2f5;
+    --rs-iconbtn-activated-addon: #d9d9d9;
+    --rs-iconbtn-pressed-addon: #c5c6c7;
+    --rs-iconbtn-primary-addon: green;
+    --rs-iconbtn-primary-activated-addon: green;
+    --rs-iconbtn-primary-pressed-addon: green;
+    --rs-divider-border: #e5e5ea;
+    --rs-loader-ring: rgba(247, 247, 250, 0.8);
+    --rs-loader-rotor: #a6a6a6;
+    --rs-loader-backdrop: rgba(255, 255, 255, 0.9);
+    --rs-loader-ring-inverse: rgba(247, 247, 250, 0.3);
+    --rs-loader-rotor-inverse: #fff;
+    --rs-loader-backdrop-inverse: rgba(39, 44, 54, 0.83);
+    --rs-message-success-header: var(--rs-text-heading);
+    --rs-message-success-text: var(--rs-text-primary);
+    --rs-message-success-icon: #4caf50;
+    --rs-message-success-bg: #eeffed;
+    --rs-message-info-header: var(--rs-text-heading);
+    --rs-message-info-text: var(--rs-text-primary);
+    --rs-message-info-icon: green;
+    --rs-message-info-bg: #f0f9ff;
+    --rs-message-warning-header: var(--rs-text-heading);
+    --rs-message-warning-text: var(--rs-text-primary);
+    --rs-message-warning-icon: #ffb300;
+    --rs-message-warning-bg: #fffaf2;
+    --rs-message-error-header: var(--rs-text-heading);
+    --rs-message-error-text: var(--rs-text-primary);
+    --rs-message-error-icon: #f44336;
+    --rs-message-error-bg: #fff2f2;
+    --rs-tooltip-bg: #272c36;
+    --rs-tooltip-text: #fff;
+    --rs-progress-bg: #e5e5ea;
+    --rs-progress-bar: green;
+    --rs-progress-bar-success: #4caf50;
+    --rs-progress-bar-fail: #f44336;
+    --rs-placeholder: #f2f2f5;
+    --rs-placeholder-active: #e5e5ea;
+    --rs-breadcrumb-item-active-text: #272c36;
+    --rs-dropdown-divider: #e5e5ea;
+    --rs-dropdown-item-bg-hover: rgba(204, 233, 255, 0.5);
+    --rs-dropdown-item-bg-active: #f2faff;
+    --rs-dropdown-item-text-active: green;
+    --rs-dropdown-header-text: #a6a6a6;
+    --rs-dropdown-shadow: 0 0 10px rgba(0, 0, 0, 0.06), 0 4px 4px rgba(0, 0, 0, 0.12);
+    --rs-menuitem-active-bg: rgba(204, 233, 255, 0.5);
+    --rs-menuitem-active-text: green;
+    --rs-steps-border: #8e8e93;
+    --rs-steps-state-finish: green;
+    --rs-steps-border-state-finish: green;
+    --rs-steps-state-wait: #8e8e93;
+    --rs-steps-state-process: green;
+    --rs-steps-state-error: #f44336;
+    --rs-steps-border-state-error: #f44336;
+    --rs-steps-icon-state-process: green;
+    --rs-steps-icon-state-error: #f44336;
+    --rs-navs-text: #575757;
+    --rs-navs-text-hover: #575757;
+    --rs-navs-bg-hover: #e5e5ea;
+    --rs-navs-text-active: #272c36;
+    --rs-navs-bg-active: #e5e5ea;
+    --rs-navs-tab-border: #d9d9d9;
+    --rs-navs-subtle-border: #f7f7fa;
+    --rs-navs-selected: green;
+    --rs-navbar-default-bg: #f7f7fa;
+    --rs-navbar-default-text: #575757;
+    --rs-navbar-default-selected-text: green;
+    --rs-navbar-default-hover-bg: #e5e5ea;
+    --rs-navbar-default-hover-text: #575757;
+    --rs-navbar-inverse-bg: green;
+    --rs-navbar-inverse-text: #fff;
+    --rs-navbar-inverse-selected-bg: green;
+    --rs-navbar-inverse-hover-bg: green;
+    --rs-navbar-inverse-hover-text: #fff;
+    --rs-navbar-subtle-bg: #fff;
+    --rs-navbar-subtle-text: #575757;
+    --rs-navbar-subtle-selected-text: green;
+    --rs-navbar-subtle-hover-bg: #f7f7fa;
+    --rs-navbar-subtle-hover-text: #575757;
+    --rs-sidenav-default-bg: #f7f7fa;
+    --rs-sidenav-default-text: #575757;
+    --rs-sidenav-default-selected-text: green;
+    --rs-sidenav-default-hover-bg: #e5e5ea;
+    --rs-sidenav-default-hover-text: #575757;
+    --rs-sidenav-default-footer-border: #e5e5ea;
+    --rs-sidenav-inverse-bg: green;
+    --rs-sidenav-inverse-text: #fff;
+    --rs-sidenav-inverse-selected-bg: green;
+    --rs-sidenav-inverse-hover-bg: green;
+    --rs-sidenav-inverse-footer-border: green;
+    --rs-sidenav-subtle-bg: #fff;
+    --rs-sidenav-subtle-text: #575757;
+    --rs-sidenav-subtle-selected-text: green;
+    --rs-sidenav-subtle-hover-bg: #f7f7fa;
+    --rs-sidenav-subtle-hover-text: #575757;
+    --rs-sidenav-subtle-footer-border: #e5e5ea;
+    --rs-input-bg: #fff;
+    --rs-input-focus-border: green;
+    --rs-input-disabled-bg: #f7f7fa;
+    --rs-listbox-option-hover-bg: rgba(204, 233, 255, 0.5);
+    --rs-listbox-option-hover-text: green;
+    --rs-listbox-option-selected-text: green;
+    --rs-listbox-option-selected-bg: #f2faff;
+    --rs-listbox-option-disabled-text: #c5c6c7;
+    --rs-listbox-option-disabled-selected-text: green;
+    --rs-checkbox-icon: #fff;
+    --rs-checkbox-border: #d9d9d9;
+    --rs-checkbox-checked-bg: green;
+    --rs-checkbox-disabled-bg: #f7f7fa;
+    --rs-radio-marker: #fff;
+    --rs-radio-border: #d9d9d9;
+    --rs-radio-checked-bg: green;
+    --rs-radio-disabled-bg: #f7f7fa;
+    --rs-radio-tile-border: #d9d9d9;
+    --rs-radio-tile-bg: #fff;
+    --rs-radio-tile-checked-color: green;
+    --rs-radio-tile-checked-mark-color: #fff;
+    --rs-radio-tile-checked-disabled-color: #cce9ff;
+    --rs-radio-tile-icon-size: 32px;
+    --rs-rate-symbol: #8e8e93;
+    --rs-rate-symbol-checked: #ffb300;
+    --rs-toggle-bg: #d9d9d9;
+    --rs-toggle-thumb: #fff;
+    --rs-toggle-loader-ring: rgba(247, 247, 250, 0.3);
+    --rs-toggle-loader-rotor: #fff;
+    --rs-toggle-hover-bg: #c5c6c7;
+    --rs-toggle-disabled-bg: #f7f7fa;
+    --rs-toggle-disabled-thumb: #fff;
+    --rs-toggle-checked-bg: green;
+    --rs-toggle-checked-thumb: #fff;
+    --rs-toggle-checked-hover-bg: green;
+    --rs-toggle-checked-disabled-bg: #cce9ff;
+    --rs-toggle-checked-disabled-thumb: #fff;
+    --rs-slider-bar: #f2f2f5;
+    --rs-slider-hover-bar: #e5e5ea;
+    --rs-slider-thumb-border: green;
+    --rs-slider-thumb-bg: #fff;
+    --rs-slider-thumb-hover-shadow: 0 0 0 8px rgba(52, 152, 255, 0.25);
+    --rs-slider-progress: green;
+    --rs-uploader-item-bg: #d9d9d9;
+    --rs-uploader-item-hover-bg: #f7f7fa;
+    --rs-uploader-overlay-bg: rgba(255, 255, 255, 0.8);
+    --rs-uploader-dnd-bg: #fff;
+    --rs-uploader-dnd-border: #e5e5ea;
+    --rs-uploader-dnd-hover-border: green;
+    --rs-avatar-bg: #d9d9d9;
+    --rs-avatar-text: #fff;
+    --rs-badge-bg: #f44336;
+    --rs-badge-text: #fff;
+    --rs-tag-bg: #f7f7fa;
+    --rs-tag-close: #f44336;
+    --rs-carousel-bg: #8e8e93;
+    --rs-carousel-indicator: rgba(255, 255, 255, 0.4);
+    --rs-carousel-indicator-hover: #fff;
+    --rs-carousel-indicator-active: green;
+    --rs-panel-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06);
+    --rs-list-bg: #fff;
+    --rs-list-border: #e5e5ea;
+    --rs-list-hover-bg: #f2faff;
+    --rs-list-placeholder-bg: rgba(242, 250, 255, 0.5);
+    --rs-list-placeholder-border: green;
+    --rs-timeline-indicator-bg: #d9d9d9;
+    --rs-timeline-indicator-active-bg: green;
+    --rs-table-shadow: rgba(9, 9, 9, 0.08);
+    --rs-table-sort: green;
+    --rs-table-resize: green;
+    --rs-table-scrollbar-track: #e5e5ea;
+    --rs-table-scrollbar-thumb: #575757;
+    --rs-table-scrollbar-thumb-active: #272c36;
+    --rs-table-scrollbar-vertical-track: rgba(229, 229, 234, 0.4);
+    --rs-drawer-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06);
+    --rs-modal-shadow: 0 4px 4px rgba(0, 0, 0, 0.12), 0 0 10px rgba(0, 0, 0, 0.06);
+    --rs-form-errormessage-text: #f44336;
+    --rs-form-errormessage-bg: #fff;
+    --rs-form-errormessage-border: #e5e5ea;
+    --rs-picker-value: green;
+    --rs-picker-count-bg: green;
+    --rs-picker-count-text: #fff;
+    --rs-calendar-today-bg: green;
+    --rs-calendar-today-text: #fff;
+    --rs-calendar-range-bg: rgba(204, 233, 255, 0.5);
+    --rs-calendar-time-unit-bg: #f7f7fa;
+    --rs-calendar-date-selected-text: #fff;
+    --rs-calendar-cell-selected-hover-bg: green;
+    --rs-popover-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
   }
   
-  .datatable th,
-  .datatable td {
-    border: 1px solid black;
-    padding: 5px;
+  .rs-btn-link{
+    color: green;
   }
-  
-  .datatable th {
-    background-color: #f5f5f5;
-    text-align: center;
-  }
-  
-  .datatable td {
-    text-align: left;
-  }
-  
-  .datatable tr:nth-child(even) {
-    background-color: #ffffff;
-  }
-  
-  .datatable tr:nth-child(odd) {
-    background-color: #f5f5f5;
-  }
-  
-  /* Animation */
-  
-  .datatable tbody tr {
-    animation: fadein 0.5s ease-in-out;
-  }
-  
-  @keyframes fadein {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  /* Colors */
-  .MuiButtonBase-root{
-    color: green  !important;
-  }
-
-  .css-1rtnrqa{
-    color: #fff !important;
-    background-color: green !important;
-  }
-
-  .deleteButton{
-    color: #fff;
+  .rs-btn-primary, .rs-btn-primary:hover, .rs-btn-primary:focus, .rs-btn-primary:active , .rs-btn-primary:disabled, .rs-btn-primary.rs-btn-disabled, .rs-btn-primary.rs-btn-disabled:hover, .rs-btn-primary.rs-btn-disabled:focus, .rs-btn-primary.rs-btn-disabled:active{
     background-color: green;
+    border-color: green;
   }
-  
-  .css-1knaqv7-MuiButtonBase-root-MuiButton-root {
-    background-color: green !important;
-    color: white !important;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  .css-y6rp3m-MuiButton-startIcon>*:nth-of-type(1) {
-    color: #fff !important;
-  }
-  .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
+  .rs-calendar-table-cell-selected .rs-calendar-table-cell-content{
     background-color: green !important;
   }
   
-  .datatable .export-button:hover {
-    background-color: darkgreen;
-  }
-  
-  /* Designs */
-  
-  .MuiDataGrid-columnHeaderTitle {
-    font-weight: bold !important;
-  }
+  .datatable {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+    }
+    
+    .datatable th,
+    .datatable td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+    
+    .datatable th {
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    
+    .datatable td {
+      text-align: left;
+    }
+    
+    .datatable tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+    
+    .datatable tr:nth-child(odd) {
+      background-color: #f5f5f5;
+    }
+    
+    /* Animation */
+    
+    .datatable tbody tr {
+      animation: fadein 0.5s ease-in-out;
+    }
+    
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Colors */
+    .MuiButtonBase-root{
+      color: green  !important;
+    }
 
-  .logout-button-container {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    margin: 10px;
-  }
-  
-  .logout-button {
-    background-color: green;
-    color: white;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .scene {
-    position: relative;
-    transform: translate3d(0, 0, 100vmin) rotateX(calc(var(--rotation-y, 0) * 1deg)) rotateY(calc(var(--rotation-x, 0) * 1deg)) rotateX(0deg);
-    box-sizing: border-box;
-	transform-style: preserve-3d;
-  display: grid;
-	place-items: center;
-	min-height: 100vh;
-	font-family:  'Google Sans', sans-serif, system-ui;
-  --size: 120;
-	--coefficient: 1px;
-	--timeline: 2.6s;
-	--delay: 0.65s;
-  --rotation-y: -24;
-  --rotation-x: 28;
-  --color-one: #00D000;
-  --color-two: #00FF00;
-  --color-three: #90EE90;
-  transform-origin: 50% 50%;
-  animation: scale var(--timeline) var(--delay) infinite linear;
-  }
-  
-  
-  @keyframes scale {
-    0%, 10% {
-      transform: scaleX(1) scaleY(1);
+    .css-1rtnrqa{
+      color: #fff !important;
+      background-color: green !important;
     }
-    35%, 100% {
-      transform: scaleX(0.5) scaleY(0.5);
+
+    .deleteButton{
+      color: #fff;
+      background-color: green;
     }
-  }
-  
-  .shadow {
-    width: calc(var(--size) * var(--coefficient));
-    position: absolute;
-    bottom: 0;
-    aspect-ratio: 1;
+    
+    .css-1knaqv7-MuiButtonBase-root-MuiButton-root {
+      background-color: green !important;
+      color: white !important;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .css-y6rp3m-MuiButton-startIcon>*:nth-of-type(1) {
+      color: #fff !important;
+    }
+    .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
+      background-color: green !important;
+    }
+    
+    .datatable .export-button:hover {
+      background-color: darkgreen;
+    }
+    
+    /* Designs */
+    
+    .MuiDataGrid-columnHeaderTitle {
+      font-weight: bold !important;
+    }
+
+    .logout-button-container {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      margin: 10px;
+    }
+    
+    .logout-button {
+      background-color: green;
+      color: white;
+      border: 1px solid #cccccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .scene {
+      position: relative;
+      transform: translate3d(0, 0, 100vmin) rotateX(calc(var(--rotation-y, 0) * 1deg)) rotateY(calc(var(--rotation-x, 0) * 1deg)) rotateX(0deg);
+      box-sizing: border-box;
+    transform-style: preserve-3d;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    font-family:  'Google Sans', sans-serif, system-ui;
+    --size: 120;
+    --coefficient: 1px;
+    --timeline: 2.6s;
+    --delay: 0.65s;
+    --rotation-y: -24;
+    --rotation-x: 28;
+    --color-one: #00D000;
+    --color-two: #00FF00;
+    --color-three: #90EE90;
     transform-origin: 50% 50%;
-    background: hsl(210 80% 50% / 0.2);
-    transform: rotateX(90deg) translate3d(0, 0, calc((var(--size) * (var(--coefficient) * -0.5)) - 1px)) scale(0.96);
-    animation: squish-squosh var(--timeline) var(--delay) infinite, fade var(--timeline) var(--delay) infinite;
-    background: black;
-  }
-  
-  .loader {
-    --depth: var(--size);
-    --color: var(--color-one, #00FF00);
-    width: calc(var(--depth) * var(--coefficient));
-    aspect-ratio: 1;
-    transform-origin: 50% 50%;
-    animation: squish-squosh var(--timeline) var(--delay) infinite;
-  }
-  
-  .spinner {
-    animation: spin var(--timeline) var(--delay) infinite;
-  }
-  
-  .jumper {
-    animation: jump var(--timeline) var(--delay) infinite;
-  }
-  
-  @keyframes squish-squosh {
-    0%, 50%, 60% {
-      scale:  1 1 1;
+    animation: scale var(--timeline) var(--delay) infinite linear;
     }
-    10%, 35% {
-      scale: 1.2 0.8 1.2;
+    
+    
+    @keyframes scale {
+      0%, 10% {
+        transform: scaleX(1) scaleY(1);
+      }
+      35%, 100% {
+        transform: scaleX(0.5) scaleY(0.5);
+      }
     }
-    25% {
-      scale: 0.8 1.2 0.8;
+    
+    .shadow {
+      width: calc(var(--size) * var(--coefficient));
+      position: absolute;
+      bottom: 0;
+      aspect-ratio: 1;
+      transform-origin: 50% 50%;
+      background: hsl(210 80% 50% / 0.2);
+      transform: rotateX(90deg) translate3d(0, 0, calc((var(--size) * (var(--coefficient) * -0.5)) - 1px)) scale(0.96);
+      animation: squish-squosh var(--timeline) var(--delay) infinite, fade var(--timeline) var(--delay) infinite;
+      background: black;
     }
-    70% {
-      scale: 1 1 2;
+    
+    .loader {
+      --depth: var(--size);
+      --color: var(--color-one, #00FF00);
+      width: calc(var(--depth) * var(--coefficient));
+      aspect-ratio: 1;
+      transform-origin: 50% 50%;
+      animation: squish-squosh var(--timeline) var(--delay) infinite;
     }
-    80% {
-      scale: 2 1 2;
+    
+    .spinner {
+      animation: spin var(--timeline) var(--delay) infinite;
     }
-    90%, 100% {
-      scale: 2 2 2;
+    
+    .jumper {
+      animation: jump var(--timeline) var(--delay) infinite;
     }
-  }
-  
-  
-  @keyframes fade {
-    0%, 10%, 40%, 50%, 60%, 100% {
-      opacity: 1;
+    
+    @keyframes squish-squosh {
+      0%, 50%, 60% {
+        scale:  1 1 1;
+      }
+      10%, 35% {
+        scale: 1.2 0.8 1.2;
+      }
+      25% {
+        scale: 0.8 1.2 0.8;
+      }
+      70% {
+        scale: 1 1 2;
+      }
+      80% {
+        scale: 2 1 2;
+      }
+      90%, 100% {
+        scale: 2 2 2;
+      }
     }
-    25% {
-      opacity: 0.5;
+    
+    
+    @keyframes fade {
+      0%, 10%, 40%, 50%, 60%, 100% {
+        opacity: 1;
+      }
+      25% {
+        opacity: 0.5;
+      }
     }
-  }
-  
-  @keyframes spin {
-    0%, 10% { rotate: 0deg; }
-    30%, 100% { rotate: -360deg; }
-  }
-  @keyframes jump {
-    0%, 10%, 35%, 50% {
-      translate: 0 0;
+    
+    @keyframes spin {
+      0%, 10% { rotate: 0deg; }
+      30%, 100% { rotate: -360deg; }
     }
-    25% {
-      translate: 0 -150%;
+    @keyframes jump {
+      0%, 10%, 35%, 50% {
+        translate: 0 0;
+      }
+      25% {
+        translate: 0 -150%;
+      }
     }
-  }
-  
-  /* Cuboid boilerplate code */
-  .cuboid {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  .cuboid__side {
-    background: var(--color);
-    position: absolute;
-  }
-  .cuboid__side:nth-of-type(1) {
-    --b: 1.1;
-    height: calc(var(--depth, 20) * var(--coefficient));
-    width: 100%;
-    top: 0;
-    transform: translate(0, -50%) rotateX(90deg);
-  }
-  .cuboid__side:nth-of-type(2) {
-    --b: 0.9;
-    --color: var(--color-three, #FF006E);
-    height: 100%;
-    width: calc(var(--depth, 20) * var(--coefficient));
-    top: 50%;
-    right: 0;
-    transform: translate(50%, -50%) rotateY(90deg);
-  }
-  .cuboid__side:nth-of-type(3) {
-    --b: 1;
-    width: 100%;
-    height: calc(var(--depth, 20) * var(--coefficient));
-    bottom: 0;
-    transform: translate(0%, 50%) rotateX(90deg);
-  }
-  .cuboid__side:nth-of-type(4) {
-    --b: 1;
-    --color: var(--color-three, #FF006E);
-    height: 100%;
-    width: calc(var(--depth, 20) * var(--coefficient));
-    left: 0;
-    top: 50%;
-    transform: translate(-50%, -50%) rotateY(90deg);
-  }
-  .cuboid__side:nth-of-type(5) {
-    --b: 1;
-    --color: var(--color-two, #3A86EF);
-    height: 100%;
-    width: 100%;
-    transform: translate3d(0, 0, calc(var(--depth, 20) * (var(--coefficient) * 0.5)));
-    top: 0;
-    left: 0;
-  }
-  .cuboid__side:nth-of-type(6) {
-    --b: 1.2;
-    height: 100%;
-    width: 100%;
-    transform: translate3d(0, 0, calc(var(--depth, 20) * (var(--coefficient) * -0.5))) rotateY(180deg);
-    top: 0;
-    left: 0;
-  }
+    
+    /* Cuboid boilerplate code */
+    .cuboid {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .cuboid__side {
+      background: var(--color);
+      position: absolute;
+    }
+    .cuboid__side:nth-of-type(1) {
+      --b: 1.1;
+      height: calc(var(--depth, 20) * var(--coefficient));
+      width: 100%;
+      top: 0;
+      transform: translate(0, -50%) rotateX(90deg);
+    }
+    .cuboid__side:nth-of-type(2) {
+      --b: 0.9;
+      --color: var(--color-three, #FF006E);
+      height: 100%;
+      width: calc(var(--depth, 20) * var(--coefficient));
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%) rotateY(90deg);
+    }
+    .cuboid__side:nth-of-type(3) {
+      --b: 1;
+      width: 100%;
+      height: calc(var(--depth, 20) * var(--coefficient));
+      bottom: 0;
+      transform: translate(0%, 50%) rotateX(90deg);
+    }
+    .cuboid__side:nth-of-type(4) {
+      --b: 1;
+      --color: var(--color-three, #FF006E);
+      height: 100%;
+      width: calc(var(--depth, 20) * var(--coefficient));
+      left: 0;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateY(90deg);
+    }
+    .cuboid__side:nth-of-type(5) {
+      --b: 1;
+      --color: var(--color-two, #3A86EF);
+      height: 100%;
+      width: 100%;
+      transform: translate3d(0, 0, calc(var(--depth, 20) * (var(--coefficient) * 0.5)));
+      top: 0;
+      left: 0;
+    }
+    .cuboid__side:nth-of-type(6) {
+      --b: 1.2;
+      height: 100%;
+      width: 100%;
+      transform: translate3d(0, 0, calc(var(--depth, 20) * (var(--coefficient) * -0.5))) rotateY(180deg);
+      top: 0;
+      left: 0;
+    }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { DateRangePicker } from "rsuite";
 import {
   DataGrid,
   GridToolbarContainer,
@@ -14,30 +15,13 @@ import Box from "@mui/material/Box";
 import "./DataTable.css";
 import Logo from "../assets/Logo.png";
 
-const csvOptions = { fileName: "contacts" };
-function CustomExportButton(props) {
-  return (
-    <GridToolbarExportContainer {...props}>
-      <GridCsvExportMenuItem options={csvOptions} />
-    </GridToolbarExportContainer>
-  );
-}
-
-function CustomToolbar(props) {
-  return (
-    <GridToolbarContainer {...props}>
-      <GridToolbarColumnsButton />
-      <GridToolbarFilterButton />
-      <GridToolbarDensitySelector />
-      <CustomExportButton />
-    </GridToolbarContainer>
-  );
-}
-
 const DataTable = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   const fetchData = async () => {
     try {
@@ -47,6 +31,7 @@ const DataTable = () => {
       const data = await response.json();
       // console.log(data);
       setData(data);
+      setFilteredData(data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -57,13 +42,68 @@ const DataTable = () => {
     fetchData();
   }, []);
 
+  const csvOptions = { fileName: "contacts" };
+  function CustomExportButton(props) {
+    return (
+      <GridToolbarExportContainer {...props}>
+        <GridCsvExportMenuItem options={csvOptions} />
+      </GridToolbarExportContainer>
+    );
+  }
+
+  function CustomToolbar(props) {
+    // const handleDateRangePickerChange = (event) => {
+    //   setSelectedDateRange(event.target.value);
+    // };
+    return (
+      <GridToolbarContainer {...props}>
+        <GridToolbarColumnsButton />
+        <GridToolbarFilterButton />
+        <GridToolbarDensitySelector />
+        <CustomExportButton />
+        <div>
+          <DateRangePicker
+            placeholder="Select Date Range"
+            onChange={handleDateRangePickerChange}
+          />
+        </div>
+      </GridToolbarContainer>
+    );
+  }
+
+  const handleDateRangePickerChange = (event) => {
+    // console.log(event," : 1");
+    setStartDate(event[0]);
+    setEndDate(event[1]);
+  };
+
+  const filterData = data.filter((row) => {
+    // console.log(row.Id);
+    // console.log(startDate," : SD");
+    // console.log(endDate," : ED");
+    const timestamp = new Date(row.TimeStamp);
+    // console.log(timestamp," : 1");
+    return timestamp >= startDate && timestamp <= endDate;
+  });
+
+  useEffect(() => {
+    // console.log(filteredData," : FD");
+    // eslint-disable-next-line
+    setFilteredData(filterData);
+    // eslint-disable-next-line
+  }, [startDate, endDate]);
+  // const filteredData = data.filter((row) => {
+  //   const timestamp = new Date(row.Timestamp);
+  //   return timestamp >= selectedDateRange[0] && timestamp <= selectedDateRange[1];
+  // });
+
   function logout() {
     // Clear the user's authentication token
     // setIsLoggedIn(false);
     localStorage.setItem("isLoggedIn", false);
-  
+
     // Redirect the user to the login page
-    window.location.href = '/';
+    window.location.href = "/";
   }
 
   const columns = [
@@ -226,8 +266,10 @@ const DataTable = () => {
     <div>
       <header>
         <img src={Logo} alt="Logo" />
-        <div class="logout-button-container">
-          <button class="logout-button" onClick={logout}>Logout</button>
+        <div className="logout-button-container">
+          <button className="logout-button" onClick={logout}>
+            Logout
+          </button>
         </div>
         <br></br>
         <br></br>
@@ -235,7 +277,7 @@ const DataTable = () => {
       </header>
       <DataGrid
         getRowId={getRowId}
-        rows={data}
+        rows={filteredData}
         columns={columns}
         initialState={{
           pagination: {
