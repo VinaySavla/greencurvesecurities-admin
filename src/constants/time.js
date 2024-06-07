@@ -16,7 +16,7 @@ const MONTHS = MONTH;
 const YEAR = 365 * DAYS;
 const YEARS = YEAR;
 
-const API = "https://greencurvesecurities-server.vercel.app/contact";
+const API = "https://greencurvesecurities--server.vercel.app/contact";
 // const API = "http://localhost:4000/contact";
 
 module.exports = {
